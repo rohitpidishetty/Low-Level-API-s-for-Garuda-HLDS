@@ -1,0 +1,4 @@
+Step 1: Create Header Files
+2: gcc -c module.c
+3: ar rcs glib.a module.o
+Run command: gcc main.c -L. -glib -o a
