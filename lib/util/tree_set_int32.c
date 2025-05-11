@@ -204,7 +204,7 @@ void union_i32_t_set(i32_t_set **A, i32_t_set **B)
   __union_i32_tree(B, A);
 }
 
-void __instersect_i32_tree(i32_t_set **root, i32_t_set **new_head, i32node **buffer, int *mag)
+void __intersect_i32_tree(i32_t_set **root, i32_t_set **new_head, i32node **buffer, int *mag)
 {
   i32_t_set *head = *root;
   if (head == NULL || (*new_head) == NULL)
@@ -220,9 +220,9 @@ void __difference_i32_tree(i32_t_set **root, i32_t_set **new_head)
   __explore_difference_tree_i32_t_set(head, new_head);
 }
 
-void instersection_i32_t_set(i32_t_set **A, i32_t_set **B, i32node **buffer, int *mag)
+void intersection_i32_t_set(i32_t_set **A, i32_t_set **B, i32node **buffer, int *mag)
 {
-  __instersect_i32_tree(B, A, buffer, mag);
+  __intersect_i32_tree(B, A, buffer, mag);
 }
 
 void difference_i32_t_set(i32_t_set **A, i32_t_set **B)
@@ -274,6 +274,7 @@ void clear_i32_t_set(i32_t_set **root)
 //    * s.add(20)
 //    * s.add(5)
 //    */
+// seed_i32_t_set
 //   seed_i32_t_set(&s, 10);
 //   seed_i32_t_set(&s, 20);
 //   seed_i32_t_set(&s, 5);

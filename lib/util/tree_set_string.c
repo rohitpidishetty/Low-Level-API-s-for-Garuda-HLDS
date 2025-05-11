@@ -267,7 +267,7 @@ void union_ch8_t_set(ch8_t_set **A, ch8_t_set **B)
   __union_ch8_tree(B, A);
 }
 
-void __instersect_ch8_tree(ch8_t_set **root, ch8_t_set **new_head, ch8node **buffer, int *mag)
+void __intersect_ch8_tree(ch8_t_set **root, ch8_t_set **new_head, ch8node **buffer, int *mag)
 {
   ch8_t_set *head = *root;
   if (head == NULL || (*new_head) == NULL)
@@ -283,9 +283,9 @@ void __difference_ch8_tree(ch8_t_set **root, ch8_t_set **new_head)
   __explore_difference_tree_ch8_t_set(head, new_head);
 }
 
-void instersection_ch8_t_set(ch8_t_set **A, ch8_t_set **B, ch8node **buffer, int *mag)
+void intersection_ch8_t_set(ch8_t_set **A, ch8_t_set **B, ch8node **buffer, int *mag)
 {
-  __instersect_ch8_tree(B, A, buffer, mag);
+  __intersect_ch8_tree(B, A, buffer, mag);
 }
 
 void difference_ch8_t_set(ch8_t_set **A, ch8_t_set **B)

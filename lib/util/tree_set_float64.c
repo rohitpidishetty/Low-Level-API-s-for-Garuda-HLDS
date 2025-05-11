@@ -237,7 +237,7 @@ void union_f64_t_set(f64_t_set **A, f64_t_set **B)
   __union_f64_tree(B, A);
 }
 
-void __instersect_f64_tree(f64_t_set **root, f64_t_set **new_head, f64node **buffer, int *mag)
+void __intersect_f64_tree(f64_t_set **root, f64_t_set **new_head, f64node **buffer, int *mag)
 {
   f64_t_set *head = *root;
   if (head == NULL || (*new_head) == NULL)
@@ -253,9 +253,9 @@ void __difference_f64_tree(f64_t_set **root, f64_t_set **new_head)
   __explore_difference_tree_f64_t_set(head, new_head);
 }
 
-void instersection_f64_t_set(f64_t_set **A, f64_t_set **B, f64node **buffer, int *mag)
+void intersection_f64_t_set(f64_t_set **A, f64_t_set **B, f64node **buffer, int *mag)
 {
-  __instersect_f64_tree(B, A, buffer, mag);
+  __intersect_f64_tree(B, A, buffer, mag);
 }
 
 void difference_f64_t_set(f64_t_set **A, f64_t_set **B)
