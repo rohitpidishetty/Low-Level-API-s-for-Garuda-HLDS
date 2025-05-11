@@ -14,6 +14,9 @@
 #include "./lib/util/hash_map_ch8k_i32v.c"
 #include "./lib/util/hash_map_ch8k_ch8v.c"
 #include "./lib/util/hash_map_ch8k_f64v.c"
+#include "./lib/util/tree_set_int32.c"
+#include "./lib/util/tree_set_float64.c"
+#include "./lib/util/tree_set_string.c"
 
 void main()
 {
@@ -69,7 +72,7 @@ void main()
   printf("%d\n", d);
   float d2 = average_i32_node(&l1, &l1_size);
   printf("%f\n", d2);
-  hybrid_sort(&l1, l1_size);
+  hybrid_sort_i32_node(&l1, l1_size);
   view_i32_node(l1, l1_size);
   add_i32_node(&l1, 234, &l1_size);
   view_i32_node(l1, l1_size);
@@ -463,4 +466,216 @@ void main()
   view_ch8_node(items8, items8_size);
 
   clear_dict_ch8k_f64v(map8, &map8_size);
+
+  // -------------------------------------------------------
+
+  /**
+   * set<int> s = new set<>()
+   */
+  i32_t_set *s0 = NULL;
+
+  /**
+   * s.union(10)
+   * s.union(20)
+   * s.union(5)
+   */
+  seed_i32_t_set(&s0, 10);
+  seed_i32_t_set(&s0, 20);
+  seed_i32_t_set(&s0, 5);
+
+  /**
+   * e = s.elements()
+   */
+
+  i32node *e = NULL;
+  int e_size = 0;
+  elements_i32_t_set(&s0, &e, &e_size);
+
+  /**
+   * e.print()
+   */
+
+  view_i32_set(e, e_size);
+
+  /**
+   * s.discard(20)
+   */
+
+  delete_i32_t_set(&s0, 20);
+
+  /**
+   * e = s.elements()
+   */
+
+  e = NULL;
+  e_size = 0;
+  elements_i32_t_set(&s0, &e, &e_size);
+
+  /**
+   * e.print()
+   */
+  view_i32_set(e, e_size);
+
+  /**
+   * s.clear()
+   */
+  clear_i32_t_set(&s0);
+
+  /**
+   * e = s.elements()
+   */
+
+  e = NULL;
+  e_size = 0;
+  elements_i32_t_set(&s0, &e, &e_size);
+
+  /**
+   * e.print()
+   */
+  view_i32_set(e, e_size);
+
+  // --------------------------------------------------------------------
+
+  /**
+   * set<float> s = new set<>()
+   */
+  f64_t_set *s1 = NULL;
+
+  /**
+   * s.union(10)
+   * s.union(20)
+   * s.union(5)
+   */
+  seed_f64_t_set(&s1, 1.0);
+  seed_f64_t_set(&s1, 2.0);
+  seed_f64_t_set(&s1, 5.3);
+
+  /**
+   * e = s.elements()
+   */
+
+  f64node *e1 = NULL;
+  int e1_size = 0;
+  elements_f64_t_set(&s1, &e1, &e1_size);
+
+  /**
+   * e.print()
+   */
+
+  view_f64_set(e1, e1_size);
+
+  /**
+   * s.discard(20)
+   */
+
+  delete_f64_t_set(&s1, 2.0);
+
+  /**
+   * e = s.elements()
+   */
+
+  e1 = NULL;
+  e1_size = 0;
+  elements_f64_t_set(&s1, &e1, &e1_size);
+
+  /**
+   * e.print()
+   */
+  view_f64_set(e1, e1_size);
+
+  /**
+   * s.clear()
+   */
+  clear_f64_t_set(&s1);
+
+  /**
+   * e = s.elements()
+   */
+
+  e1 = NULL;
+  e1_size = 0;
+  elements_f64_t_set(&s1, &e1, &e1_size);
+
+  /**
+   * e.print()
+   */
+  view_f64_set(e1, e1_size);
+  // --------------------------------------------------------------------
+  /**
+   * set<str> s = new set<>()
+   */
+  ch8_t_set *s3 = NULL;
+
+  seed_ch8_t_set(&s3, "ram");
+  seed_ch8_t_set(&s3, "ram");
+  seed_ch8_t_set(&s3, "ramesh");
+
+  ch8node *e3 = NULL;
+  int e3_size = 0;
+  elements_ch8_t_set(&s3, &e3, &e3_size);
+
+  view_ch8_set(e3, e3_size);
+
+  delete_ch8_t_set(&s3, "ramesh");
+
+  e3 = NULL;
+  e3_size = 0;
+  elements_ch8_t_set(&s3, &e3, &e3_size);
+
+  view_ch8_set(e3, e3_size);
+
+  clear_ch8_t_set(&s3);
+
+  e3 = NULL;
+  e3_size = 0;
+  elements_ch8_t_set(&s3, &e3, &e3_size);
+
+  view_ch8_set(e3, e3_size);
+  // -------------------------------------
+  // Two sets
+  i32_t_set *set1 = NULL;
+  seed_i32_t_set(&set1, 1);
+  seed_i32_t_set(&set1, 5);
+  seed_i32_t_set(&set1, 10);
+  i32_t_set *set2 = NULL;
+  seed_i32_t_set(&set2, 5);
+  seed_i32_t_set(&set2, 10);
+  seed_i32_t_set(&set2, 11);
+
+  // {1,5,10} U {5,10,11} : {1,5,10,11}
+
+  /**
+   * set1.union(set2)
+   */
+  union_i32_t_set(&set1, &set2);
+
+  /**
+   * ex = set1.elements()
+   */
+  i32node *ex = NULL;
+  int ex_size = 0;
+  elements_i32_t_set(&set1, &ex, &ex_size);
+  /**
+   * ex.print()
+   */
+  view_i32_set(ex, ex_size);
+  /**
+   * intsec = set1.intersection(set2)
+   */
+  i32node *intsec = NULL;
+  int intsec_size = 0;
+  instersection_i32_t_set(&set1, &set2, &intsec, &intsec_size);
+
+  view_i32_set(intsec, intsec_size);
+  /**
+   * set1.difference(set2)
+   */
+
+  difference_i32_t_set(&set1, &set2);
+
+  ex = NULL;
+  ex_size = 0;
+  elements_i32_t_set(&set1, &ex, &ex_size);
+  view_i32_set(ex, ex_size);
+  // --------------------------------------------
 }
