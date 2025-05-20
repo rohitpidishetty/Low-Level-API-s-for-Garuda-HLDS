@@ -178,12 +178,12 @@ char *contains_f64_node(f64node **root, float data)
   {
     if (current->data == data)
     {
-      return "true";
+      return "True";
       break;
     }
     current = current->next;
   }
-  return "false";
+  return "False";
 }
 
 float get_f64_node(f64node **root, int index)
@@ -217,8 +217,8 @@ int index_of_f64_node(f64node **root, float value)
 char *is_empty_f64_node(int *magnitude)
 {
   if ((*magnitude) == 0)
-    return "true";
-  return "false";
+    return "True";
+  return "False";
 }
 
 void clear_f64_node(f64node **root, int *magnitude)
@@ -257,16 +257,16 @@ char *equals_f64_node(f64node **root_0, f64node **root_1, int *root_0_mag, int *
   f64node *r1 = *root_1;
 
   if ((*root_0_mag) != (*root_1_mag))
-    return "false";
+    return "False";
   while (r0 != NULL && r1 != NULL)
   {
     if (r0->data != r1->data)
-      return "false";
+      return "False";
     r0 = r0->next;
     r1 = r1->next;
   }
 
-  return "true";
+  return "True";
 }
 
 float max_f64_node(f64node **root)
