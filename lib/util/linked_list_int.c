@@ -170,19 +170,19 @@ void remove_i32_node(i32node **root, int data, int *magnitude)
   }
 }
 
-char *contains_i32_node(i32node **root, int data)
+int contains_i32_node(i32node **root, int data)
 {
   i32node *current = *root;
   while (current != NULL)
   {
     if (current->data == data)
     {
-      return "True";
+      return 1;
       break;
     }
     current = current->next;
   }
-  return "False";
+  return 0;
 }
 
 int get_i32_node(i32node **root, int index)
@@ -213,11 +213,11 @@ int index_of_i32_node(i32node **root, int value)
   return -1;
 }
 
-char *is_empty_i32_node(int *magnitude)
+int is_empty_i32_node(int *magnitude)
 {
   if ((*magnitude) == 0)
-    return "True";
-  return "False";
+    return 1;
+  return 0;
 }
 
 void clear_i32_node(i32node **root, int *magnitude)
@@ -384,22 +384,22 @@ void extend_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *r
   (*root_0_mag) += (*root_1_mag);
 }
 
-char *equals_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *root_1_mag)
+int equals_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *root_1_mag)
 {
   i32node *r0 = *root_0;
   i32node *r1 = *root_1;
 
   if ((*root_0_mag) != (*root_1_mag))
-    return "False";
+    return 0;
   while (r0 != NULL && r1 != NULL)
   {
     if (r0->data != r1->data)
-      return "False";
+      return 0;
     r0 = r0->next;
     r1 = r1->next;
   }
 
-  return "True";
+  return 1;
 }
 // ----------------------------
 // void main()

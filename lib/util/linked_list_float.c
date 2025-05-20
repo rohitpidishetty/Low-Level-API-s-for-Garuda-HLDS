@@ -171,19 +171,19 @@ void remove_f64_node(f64node **root, float data, int *magnitude)
   }
 }
 
-char *contains_f64_node(f64node **root, float data)
+int contains_f64_node(f64node **root, float data)
 {
   f64node *current = *root;
   while (current != NULL)
   {
     if (current->data == data)
     {
-      return "True";
+      return 1;
       break;
     }
     current = current->next;
   }
-  return "False";
+  return 0;
 }
 
 float get_f64_node(f64node **root, int index)
@@ -214,11 +214,11 @@ int index_of_f64_node(f64node **root, float value)
   return -1;
 }
 
-char *is_empty_f64_node(int *magnitude)
+int is_empty_f64_node(int *magnitude)
 {
   if ((*magnitude) == 0)
-    return "True";
-  return "False";
+    return 1;
+  return 0;
 }
 
 void clear_f64_node(f64node **root, int *magnitude)
@@ -251,22 +251,22 @@ void reverse_f64_node(f64node **root)
   *root = prev_node;
 }
 
-char *equals_f64_node(f64node **root_0, f64node **root_1, int *root_0_mag, int *root_1_mag)
+int equals_f64_node(f64node **root_0, f64node **root_1, int *root_0_mag, int *root_1_mag)
 {
   f64node *r0 = *root_0;
   f64node *r1 = *root_1;
 
   if ((*root_0_mag) != (*root_1_mag))
-    return "False";
+    return 0;
   while (r0 != NULL && r1 != NULL)
   {
     if (r0->data != r1->data)
-      return "False";
+      return 0;
     r0 = r0->next;
     r1 = r1->next;
   }
 
-  return "True";
+  return 1;
 }
 
 float max_f64_node(f64node **root)
