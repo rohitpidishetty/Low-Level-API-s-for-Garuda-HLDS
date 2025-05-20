@@ -177,12 +177,12 @@ char *contains_i32_node(i32node **root, int data)
   {
     if (current->data == data)
     {
-      return "true";
+      return "True";
       break;
     }
     current = current->next;
   }
-  return "false";
+  return "False";
 }
 
 int get_i32_node(i32node **root, int index)
@@ -216,8 +216,8 @@ int index_of_i32_node(i32node **root, int value)
 char *is_empty_i32_node(int *magnitude)
 {
   if ((*magnitude) == 0)
-    return "true";
-  return "false";
+    return "True";
+  return "False";
 }
 
 void clear_i32_node(i32node **root, int *magnitude)
@@ -390,16 +390,16 @@ char *equals_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *
   i32node *r1 = *root_1;
 
   if ((*root_0_mag) != (*root_1_mag))
-    return "false";
+    return "False";
   while (r0 != NULL && r1 != NULL)
   {
     if (r0->data != r1->data)
-      return "false";
+      return "False";
     r0 = r0->next;
     r1 = r1->next;
   }
 
-  return "true";
+  return "True";
 }
 // ----------------------------
 // void main()
