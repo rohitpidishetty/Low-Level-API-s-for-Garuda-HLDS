@@ -1,2 +1,2 @@
 # Garuda
-Garuda compiler
+Libraries for Garuda compiler
