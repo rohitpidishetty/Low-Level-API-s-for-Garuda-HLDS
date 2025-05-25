@@ -1,6 +1,7 @@
 #define LINKED_LIST_INT
 #define LINKED_LIST_STRING
 #define LINKED_LIST_FLOAT
+#define HASH_MAP_STRING
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,6 +18,7 @@
 #include "./lib/util/tree_set_int32.c"
 #include "./lib/util/tree_set_float64.c"
 #include "./lib/util/tree_set_string.c"
+#include "./lib/util/string_sub_routines.c"
 
 void main()
 {
@@ -48,17 +50,17 @@ void main()
   view_i32_node(l1, l1_size);
   remove_i32_node(&l1, 12, &l1_size);
   view_i32_node(l1, l1_size);
-  char *s = contains_i32_node(&l1, 400);
-  printf("%s\n", s);
+  int s = contains_i32_node(&l1, 400);
+  printf("%d\n", s);
   int n = get_i32_node(&l1, 4);
   printf("%d\n", n);
   n = index_of_i32_node(&l1, -4);
   printf("%d\n", n);
   s = is_empty_i32_node(&l1_size);
-  printf("%s\n", s);
+  printf("%d\n", s);
   view_i32_node(l1, l1_size);
   s = is_empty_i32_node(&l1_size);
-  printf("%s\n", s);
+  printf("%d\n", s);
   reverse_i32_node(&l1);
   add_i32_node(&l1, 123, &l1_size);
   view_i32_node(l1, l1_size);
@@ -86,7 +88,7 @@ void main()
   add_i32_node(&l2, 3, &l2_size);
   add_i32_node(&l2, 4, &l2_size);
   s = equals_i32_node(&l1, &l2, &l1_size, &l2_size);
-  printf("%s\n", s);
+  printf("%d\n", s);
   extend_i32_node(&l1, &l2, &l1_size, &l2_size);
   view_i32_node(l1, l1_size);
   d = size_i32_node(l1_size);
@@ -108,10 +110,10 @@ void main()
   view_ch8_node(c1, c1_size);
   remove_ch8_node(&c1, "banana", &c1_size);
   view_ch8_node(c1, c1_size);
-  printf("Contains 'cherry': %s\n", contains_ch8_node(&c1, "cherry"));
+  printf("Contains 'cherry': %d\n", contains_ch8_node(&c1, "cherry"));
   printf("Get index 2: %s\n", get_ch8_node(&c1, 2));
   printf("Index of 'date': %d\n", index_of_ch8_node(&c1, "date"));
-  printf("Is empty: %s\n", is_empty_ch8_node(&c1_size));
+  printf("Is empty: %d\n", is_empty_ch8_node(&c1_size));
   reverse_ch8_node(&c1);
   view_ch8_node(c1, c1_size);
 
@@ -134,10 +136,10 @@ void main()
   remove_f64_node(&f1, 2.2, &f1_size);
   view_f64_node(f1, f1_size);
 
-  printf("Contains 3.3: %s\n", contains_f64_node(&f1, 3.3));
+  printf("Contains 3.3: %d\n", contains_f64_node(&f1, 3.3));
   printf("Get index 2: %.2f\n", get_f64_node(&f1, 2));
   printf("Index of 4.4: %d\n", index_of_f64_node(&f1, 4.4));
-  printf("Is empty: %s\n", is_empty_f64_node(&f1_size));
+  printf("Is empty: %d\n", is_empty_f64_node(&f1_size));
 
   reverse_f64_node(&f1);
   view_f64_node(f1, f1_size);
@@ -678,4 +680,134 @@ void main()
   elements_i32_t_set(&set1, &ex, &ex_size);
   view_i32_set(ex, ex_size);
   // --------------------------------------------
+
+  // String functions
+  char *name = "alice";
+
+  // l = name.length()
+  int l = word_magnitude(&name);
+  printf("%d\n", l);
+
+  // ch = name.charAt(2)
+  char *ch = word_character_at_index(&name, 0);
+  printf("%s\n", ch);
+
+  // ss = name.subString(0,3)
+  char *ss = word_sub_string(&name, 0, 3);
+  printf("%s\n", ss);
+
+  // ss = name.subString(3,-1)
+  ss = word_sub_string(&name, 3, -1);
+  printf("%s\n", ss);
+
+  char *name2 = "namaste hyderabad, how are you der ?";
+
+  // eq = name.equals(name2)
+  int eq = word_check_similarity(&name, &name2);
+  printf("%d\n", eq);
+
+  char *stream = "der";
+  // co = name2.contains(stream)
+  int co = word_contains(&name2, &stream);
+  printf("%d\n", co);
+
+  stream = "d";
+  // co = name2.firstIndex(stream)
+  co = word_contains(&name2, &stream);
+  printf("%d\n", co);
+
+  stream = "d";
+  // co = name2.lastIndex(stream)
+  co = word_last_index(&name2, &stream);
+  printf("%d\n", co);
+
+  stream = "nama";
+  // co = name2.startsWith(stream)
+  co = word_starts_with(&name2, &stream);
+  printf("%d\n", co);
+
+  stream = "er ?";
+  // co = name2.endsWith(stream)
+  co = word_ends_with(&name2, &stream);
+  printf("%d\n", co);
+
+  // name = name.upperCase()
+  name = word_upper_case(&name);
+  printf("%s\n", name);
+
+  // name = name.lowerCase()
+  name = word_lower_case(&name);
+  printf("%s\n", name);
+
+  char *word = "      rohit       ";
+  // word = word.trim()
+  word = word_trim(&word);
+  printf("%s\n", word);
+
+  char *message = "hello     alice how are you alice";
+  char *_name = "alice";
+  char *__name = "bob";
+  // message = message.replace(_name, __name)
+  message = word_replace(&message, &_name, &__name);
+  printf("%s\n", message);
+
+  // tokens = message.split()
+  ch8node *tokens = NULL;
+  int tokens_size = 0;
+  word_split(&message, &tokens, &tokens_size);
+  view_ch8_node(tokens, tokens_size);
+
+  // charArr = toCharArray()
+  ch8node *charArr = NULL;
+  int charArr_size = 0;
+  word_char_split(&message, &charArr, &charArr_size);
+  view_ch8_node(charArr, charArr_size);
+
+  char *delimeter = " ";
+  // stream2 = delimeter.join(name, name2, message)
+  char *stream2 = word_binder_with_delimiter(4, "-", "hey", "hello", "how");
+  printf("%s\n", stream2);
+
+  // bin = name.toBinary()
+  char *bin = word_binary_representation(&name);
+  printf("%s\n", bin);
+
+  // hex = name.toHexa()
+  char *x = "hello how are you ? brooww";
+  char *hex = word_hexa_representation(&x);
+  printf("%s\n", hex);
+
+  // oct = name.toOcta()
+  char *oct = word_octa_representation(&name);
+  printf("%s\n", oct);
+
+  // name = name.reverse()
+  name = word_reverse(&name);
+  printf("%s\n", name);
+
+  char *number = "12345566789";
+
+  // status = number.isNum()
+  int status = word_check_if_all_numerical(&number);
+  printf("%d\n", status);
+
+  number = "sujahdbvshd";
+  // status = number.isAlpha()
+  status = word_check_if_all_alpha(&number);
+  printf("%d\n", status);
+
+  number = "sujahdbvshd";
+  // status = number.isAlphaNum()
+  status = word_check_if_all_alpha_numerical(&number);
+  printf("%d\n", status);
+
+  number = "shgd";
+  // status = number.isEmpty()
+  status = word_check_if_empty(&number);
+  printf("%d\n", status);
+
+  // These shall be built using my java packages.
+  // encrypt
+  // decrypt
+  // codeCrackerAlgo
 }
