@@ -294,13 +294,18 @@ ch8node **word_split(char **word, ch8node **bucket, int *magnitude)
   int word_mag = word_magnitude(&word_bucket);
   while (right_pointer < word_mag)
   {
-    if (word_bucket[right_pointer] == SPACE)
+    if (word_bucket[right_pointer] == SPACE || right_pointer == word_mag - 1)
     {
-      add_ch8_node(bucket, word_sub_string(word, left_pointer, right_pointer), magnitude);
-      right_pointer++;
-      while (word_bucket[right_pointer] == SPACE)
+      if (right_pointer == word_mag - 1)
+        add_ch8_node(bucket, word_sub_string(word, left_pointer, right_pointer + 1), magnitude);
+      else
+      {
+        add_ch8_node(bucket, word_sub_string(word, left_pointer, right_pointer), magnitude);
         right_pointer++;
-      left_pointer = right_pointer;
+        while (word_bucket[right_pointer] == SPACE)
+          right_pointer++;
+        left_pointer = right_pointer;
+      }
     }
     right_pointer++;
   }
