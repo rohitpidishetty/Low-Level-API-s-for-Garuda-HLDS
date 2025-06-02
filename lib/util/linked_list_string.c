@@ -58,23 +58,55 @@ void view_ch8_node(ch8node *root, int size)
   printf("]\n");
 }
 
-void pop_ch8_node(ch8node *root, int *magnitude)
+// void pop_ch8_node(ch8node *root, int *magnitude)
+// {
+//   if (root == NULL || root->next == NULL)
+//   {
+//     printf("Cannot pop from empty or single-node list.\n");
+//     return;
+//   }
+
+//   ch8node *prev_node = NULL;
+//   while (root->next != NULL)
+//   {
+//     prev_node = root;
+//     root = root->next;
+//   }
+//   prev_node->next = NULL;
+//   free(root->data);
+//   free(root);
+//   (*magnitude)--;
+// }
+
+void pop_ch8_node(ch8node **root, int *magnitude)
 {
-  if (root == NULL || root->next == NULL)
+  if (*root == NULL || *magnitude == 0)
   {
-    printf("Cannot pop from empty or single-node list.\n");
+    printf("Cannot pop from empty list.\n");
     return;
   }
 
+  ch8node *current = *root;
   ch8node *prev_node = NULL;
-  while (root->next != NULL)
+
+  while (current->next != NULL)
   {
-    prev_node = root;
-    root = root->next;
+    prev_node = current;
+    current = current->next;
   }
-  prev_node->next = NULL;
-  free(root->data);
-  free(root);
+
+  if (prev_node == NULL)
+  {
+    free((*root)->data);
+    free(*root);
+    *root = NULL;
+  }
+  else
+  {
+    prev_node->next = NULL;
+    free(current->data);
+    free(current);
+  }
   (*magnitude)--;
 }
 

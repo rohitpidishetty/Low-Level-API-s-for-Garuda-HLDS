@@ -57,18 +57,47 @@ void view_f64_node(f64node *root, int l1_size)
   printf("]\n");
 }
 
-void pop_f64_node(f64node *root, int *magnitude)
+// void pop_f64_node(f64node *root, int *magnitude)
+// {
+//   if (root == NULL)
+//     return;
+//   f64node *prev_node = NULL;
+//   while (root->next != NULL)
+//   {
+//     prev_node = root;
+//     root = root->next;
+//   }
+//   prev_node->next = NULL;
+//   free(root);
+//   (*magnitude)--;
+// }
+
+void pop_f64_node(f64node **root, int *magnitude)
 {
-  if (root == NULL)
+  if (*root == NULL || *magnitude == 0)
     return;
+
+  f64node *current = *root;
   f64node *prev_node = NULL;
-  while (root->next != NULL)
+
+  while (current->next != NULL)
   {
-    prev_node = root;
-    root = root->next;
+    prev_node = current;
+    current = current->next;
   }
-  prev_node->next = NULL;
-  free(root);
+
+  if (prev_node == NULL)
+  {
+    // Only one node in the list
+    free(*root);
+    *root = NULL;
+  }
+  else
+  {
+    prev_node->next = NULL;
+    free(current);
+  }
+
   (*magnitude)--;
 }
 

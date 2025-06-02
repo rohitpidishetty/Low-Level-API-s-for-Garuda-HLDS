@@ -56,18 +56,47 @@ void view_i32_node(i32node *root, int l1_size)
   printf("]\n");
 }
 
-void pop_i32_node(i32node *root, int *magnitude)
+// void pop_i32_node(i32node *root, int *magnitude)
+// {
+//   if (root == NULL)
+//     return;
+//   i32node *prev_node = NULL;
+//   while (root->next != NULL)
+//   {
+//     prev_node = root;
+//     root = root->next;
+//   }
+//   prev_node->next = NULL;
+//   free(root);
+//   (*magnitude) -= 1;
+// }
+
+void pop_i32_node(i32node **root, int *magnitude)
 {
-  if (root == NULL)
+  if (*root == NULL || *magnitude == 0)
     return;
+
+  i32node *current = *root;
   i32node *prev_node = NULL;
-  while (root->next != NULL)
+
+  while (current->next != NULL)
   {
-    prev_node = root;
-    root = root->next;
+    prev_node = current;
+    current = current->next;
   }
-  prev_node->next = NULL;
-  free(root);
+
+  if (prev_node == NULL)
+  {
+    // Only one node in the list
+    free(*root);
+    *root = NULL;
+  }
+  else
+  {
+    prev_node->next = NULL;
+    free(current);
+  }
+
   (*magnitude) -= 1;
 }
 
