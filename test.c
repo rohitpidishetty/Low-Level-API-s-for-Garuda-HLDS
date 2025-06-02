@@ -30,7 +30,7 @@ void main()
   add_i32_node(&l1, 3, &l1_size);
   add_i32_node(&l1, 4, &l1_size);
   view_i32_node(l1, l1_size);
-  pop_i32_node(l1, &l1_size);
+  pop_i32_node(&l1, &l1_size);
   view_i32_node(l1, l1_size);
   int d = size_i32_node(l1_size);
   printf("%d\n", d);
