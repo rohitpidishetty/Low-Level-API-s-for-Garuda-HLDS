@@ -215,6 +215,16 @@ int contains_f64_node(f64node **root, float data)
   return 0;
 }
 
+float peek_f64_node(f64node **root)
+{
+  if ((*root) == NULL)
+    return -1.0;
+  f64node *buffer = (*root);
+  while (buffer->next != NULL)
+    buffer = buffer->next;
+  return buffer->data;
+}
+
 float get_f64_node(f64node **root, int index)
 {
   int position = 0;

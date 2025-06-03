@@ -71,6 +71,16 @@ void view_i32_node(i32node *root, int l1_size)
 //   (*magnitude) -= 1;
 // }
 
+int peek_i32_node(i32node **root)
+{
+  if ((*root) == NULL)
+    return -1;
+  i32node *buffer = (*root);
+  while (buffer->next != NULL)
+    buffer = buffer->next;
+  return buffer->data;
+}
+
 void pop_i32_node(i32node **root, int *magnitude)
 {
   if (*root == NULL || *magnitude == 0)
@@ -430,150 +440,8 @@ int equals_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *ro
 
   return 1;
 }
-// ----------------------------
-// void main()
-// {
-//   // list<int> l1 = new list<>()
-//   i32node *l1 = NULL;
-//   int l1_size = 0;
 
-//   // l1.push(1)
-//   add_i32_node(&l1, 1, &l1_size);
-//   // l1.push(2)
-//   add_i32_node(&l1, 2, &l1_size);
-//   // l1.push(3)
-//   add_i32_node(&l1, 3, &l1_size);
-//   // l1.push(4)
-//   add_i32_node(&l1, 4, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // l1.pop()
-//   pop_i32_node(l1, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // d = l1.size()
-//   // print(d)
-//   int d = size_i32_node(l1_size);
-//   printf("%d\n", d);
-//   // l1.insertAt(1, 12)
-//   insert_at_i32_node(&l1, 12, 1, &l1_size);
-//   // l1.insertAt(2, 24)
-//   insert_at_i32_node(&l1, 24, 2, &l1_size);
-//   // l1.insertAt(0, -24)
-//   insert_at_i32_node(&l1, -24, 0, &l1_size);
-//   // l1.insertAt(5, -4)
-//   insert_at_i32_node(&l1, -4, 5, &l1_size);
-//   // l1.push(40)
-//   add_i32_node(&l1, 40, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // l1.poll()
-//   poll_i32_node(&l1, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // l1.deleteAt(3)
-//   delete_at_i32_node(&l1, 0, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // l1.push(400)
-//   add_i32_node(&l1, 400, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // l1.remove(40)
-//   remove_i32_node(&l1, 40, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // l1.remove(40)
-//   remove_i32_node(&l1, 12, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // s = l1.contains(400)
-//   // print(s)
-//   char *s = contains_i32_node(&l1, 400);
-//   printf("%s\n", s);
-//   // n = l1.get(4)
-//   // print(n)
-//   int n = get_i32_node(&l1, 4);
-//   printf("%d\n", n);
-//   // n = l1.indexOf(400)
-//   // print(n)
-//   n = index_of_i32_node(&l1, -4);
-//   printf("%d\n", n);
-//   // s = l1.isEmpty()
-//   // print(s)
-//   s = is_empty_i32_node(&l1_size);
-//   printf("%s\n", s);
-//   // l1.clear()
-//   // clear_i32_node(&l1, &l1_size);
-//   // l1.print()
-//   view_i32_node(l1, l1_size);
-//   // s = l1.isEmpty()
-//   // print(s)
-//   s = is_empty_i32_node(&l1_size);
-//   printf("%s\n", s);
-//   // l1.reverse()
-//   reverse_i32_node(&l1);
-//   // l1.add(123)
-//   add_i32_node(&l1, 123, &l1_size);
-//   // l1.view()
-//   view_i32_node(l1, l1_size);
-//   // d = l1.size()
-//   // print(d)
-//   d = size_i32_node(l1_size);
-//   printf("%d\n", d);
-//   // d = l1.max()
-//   // print(d)
-//   d = max_i32_node(&l1);
-//   printf("%d\n", d);
-//   // d = l1.min()
-//   // print(d)
-//   d = min_i32_node(&l1);
-//   printf("%d\n", d);
-//   // d = l1.sum()
-//   // print(d)
-//   d = sum_i32_node(&l1);
-//   printf("%d\n", d);
-//   // d2 = l1.avg()
-//   // print(d2)
-//   float d2 = average_i32_node(&l1, &l1_size);
-//   printf("%f\n", d2);
-//   // l1.sort()
-//   hybrid_sort(&l1, l1_size);
-//   // l1.view()
-//   view_i32_node(l1, l1_size);
-//   // l1.add(234)
-//   add_i32_node(&l1, 234, &l1_size);
-//   // l1.view()
-//   view_i32_node(l1, l1_size);
-//   // d = l1.size()
-//   // print(d)
-//   d = size_i32_node(l1_size);
-//   printf("%d\n", d);
-
-//   // list<int> l2 = new list<>()
-//   i32node *l2 = NULL;
-//   int l2_size = 0;
-
-//   // l2.push(11)
-//   add_i32_node(&l2, 1, &l2_size);
-//   // l2.push(12)
-//   add_i32_node(&l2, 2, &l2_size);
-//   // l2.push(13)
-//   add_i32_node(&l2, 3, &l2_size);
-//   // l2.push(14)
-//   add_i32_node(&l2, 4, &l2_size);
-//   // s = l1.equals(l2)
-//   // print(s)
-//   s = equals_i32_node(&l1, &l2, &l1_size, &l2_size);
-//   printf("%s\n", s);
-//   // l1.extend(l2)
-//   extend_i32_node(&l1, &l2, &l1_size, &l2_size);
-//   view_i32_node(l1, l1_size);
-//   // d = l1.size()
-//   // print(d)
-//   d = size_i32_node(l1_size);
-//   printf("%d\n", d);
-// }
+// -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 /**
 list<int> l1 = new list<>()

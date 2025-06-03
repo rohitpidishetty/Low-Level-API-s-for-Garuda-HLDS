@@ -54,6 +54,8 @@ void main()
   printf("%d\n", s);
   int n = get_i32_node(&l1, 4);
   printf("%d\n", n);
+  n = peek_i32_node(&l1);
+  printf("%d\n", n);
   n = index_of_i32_node(&l1, -4);
   printf("%d\n", n);
   s = is_empty_i32_node(&l1_size);

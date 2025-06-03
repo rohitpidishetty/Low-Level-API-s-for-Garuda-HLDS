@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifndef NULL_STRING
+#define NULL_STRING "null"
+#endif
+
 typedef struct ch8node
 {
   char *data;
@@ -237,6 +241,16 @@ int contains_ch8_node(ch8node **root, const char *data)
   return 0;
 }
 
+char *peek_ch8_node(ch8node **root)
+{
+  if ((*root) == NULL)
+    return NULL_STRING;
+  ch8node *buffer = (*root);
+  while (buffer->next != NULL)
+    buffer = buffer->next;
+  return buffer->data;
+}
+
 char *get_ch8_node(ch8node **root, int index)
 {
   int position = 0;
@@ -248,7 +262,7 @@ char *get_ch8_node(ch8node **root, int index)
     current = current->next;
     position++;
   }
-  return NULL;
+  return NULL_STRING;
 }
 
 int index_of_ch8_node(ch8node **root, const char *value)
