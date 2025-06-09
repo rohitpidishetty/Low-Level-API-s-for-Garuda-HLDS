@@ -333,3 +333,27 @@ int equals_ch8_node(ch8node **root_0, ch8node **root_1, int *root_0_mag, int *ro
 
   return 1;
 }
+
+void extend_ch8_node(ch8node **root_0, ch8node **root_1, int *root_0_mag, int *root_1_mag)
+{
+  if (*root_0 == NULL)
+    *root_0 = *root_1;
+  else
+  {
+    ch8node *curr = *root_0;
+    while (curr->next != NULL)
+      curr = curr->next;
+    curr->next = *root_1;
+  }
+  *root_0_mag += *root_1_mag;
+}
+
+void deep_copy_ch8_node(ch8node **destination_buffer, int *destination_buffer_magnitude, ch8node **source_buffer, int *source_buffer_magnitude)
+{
+  ch8node *src_buff = *source_buffer;
+  while (src_buff != NULL)
+  {
+    add_ch8_node(destination_buffer, src_buff->data, destination_buffer_magnitude);
+    src_buff = src_buff->next;
+  }
+}

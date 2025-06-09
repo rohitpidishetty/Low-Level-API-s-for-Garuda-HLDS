@@ -455,6 +455,16 @@ int equals_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *ro
   return 1;
 }
 
+void deep_copy_i32_node(i32node **destination_buffer, int *destination_buffer_magnitude, i32node **source_buffer, int *source_buffer_magnitude)
+{
+  i32node *src_buff = *source_buffer;
+  while (src_buff != NULL)
+  {
+    add_i32_node(destination_buffer, src_buff->data, destination_buffer_magnitude);
+    src_buff = src_buff->next;
+  }
+}
+
 // -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 /**

@@ -451,3 +451,13 @@ void extend_f64_node(f64node **root_0, f64node **root_1, int *root_0_mag, int *r
   }
   *root_0_mag += *root_1_mag;
 }
+
+void deep_copy_f64_node(f64node **destination_buffer, int *destination_buffer_magnitude, f64node **source_buffer, int *source_buffer_magnitude)
+{
+  f64node *src_buff = *source_buffer;
+  while (src_buff != NULL)
+  {
+    add_f64_node(destination_buffer, src_buff->data, destination_buffer_magnitude);
+    src_buff = src_buff->next;
+  }
+}

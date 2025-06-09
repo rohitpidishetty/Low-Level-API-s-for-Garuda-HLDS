@@ -849,7 +849,7 @@ void main()
   view_i32_vec(mat, mat_size);
 
   // list = mat.get(2)
-  i32node *list = get_i32_vec(mat, 2);
+  i32node *list = get_i32_vec(&mat, 2);
   // The compiler should know that list is a mul-dim variable, as few functions differ in list using multi-dims.
 
   // list.print()
@@ -924,7 +924,7 @@ void main()
   view_f64_vec(mat1, mat1_size);
 
   // list2 = mat1.get(2)
-  f64node *list2 = get_f64_vec(mat1, 2);
+  f64node *list2 = get_f64_vec(&mat1, 2);
   // The compiler should know that list is a mul-dim variable, as few functions differ in list using multi-dims.
 
   // list2.print()
@@ -1001,7 +1001,7 @@ void main()
   view_ch8_vec(mat2, mat2_size);
 
   // list21 = mat2.get(2)
-  ch8node *list21 = get_ch8_vec(mat2, 2);
+  ch8node *list21 = get_ch8_vec(&mat2, 2);
   // The compiler should know that list is a mul-dim variable, as few functions differ in list using multi-dims.
 
   // list21.print()
@@ -1040,4 +1040,21 @@ void main()
 
   // mat.print()
   view_ch8_vec(mat2, mat2_size);
+
+  // Deep copy
+
+  i32node *x_list = NULL;
+  int x_list_size = 0;
+  add_i32_node(&x_list, 111, &x_list_size);
+  add_i32_node(&x_list, 222, &x_list_size);
+  add_i32_node(&x_list, 333, &x_list_size);
+
+
+  // list<int> temp = new list<>()
+  i32node *x_list_temp = NULL;
+  int x_list_temp_size = 0;
+  
+  // temp.deepCopy(x_list)
+  deep_copy_i32_node(&x_list_temp, &x_list_temp_size, &x_list, &x_list_size);
+
 }
