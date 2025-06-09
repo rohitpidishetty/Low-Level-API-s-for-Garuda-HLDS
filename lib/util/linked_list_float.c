@@ -435,3 +435,19 @@ void hybrid_sort_f64_node(f64node **root, int magnitude)
 {
   *root = (magnitude <= 75) ? insertion_sort_f64_list(*root) : merge_sort_f64_list(*root);
 }
+
+void extend_f64_node(f64node **root_0, f64node **root_1, int *root_0_mag, int *root_1_mag)
+{
+  if (*root_0 == NULL)
+  {
+    *root_0 = *root_1;
+  }
+  else
+  {
+    f64node *curr = *root_0;
+    while (curr->next != NULL)
+      curr = curr->next;
+    curr->next = *root_1;
+  }
+  *root_0_mag += *root_1_mag;
+}

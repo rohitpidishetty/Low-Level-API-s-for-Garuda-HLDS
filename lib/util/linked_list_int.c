@@ -414,13 +414,27 @@ void hybrid_sort_i32_node(i32node **root, int magnitude)
   *root = (magnitude <= 75) ? insertion_sort_list(*root) : merge_sort_list(*root);
 }
 
+// void extend_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *root_1_mag)
+// {
+//   i32node *curr = *root_0;
+//   while (curr->next != NULL)
+//     curr = curr->next;
+//   curr->next = (*root_1);
+//   (*root_0_mag) += (*root_1_mag);
+// }
+
 void extend_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *root_1_mag)
 {
-  i32node *curr = *root_0;
-  while (curr->next != NULL)
-    curr = curr->next;
-  curr->next = (*root_1);
-  (*root_0_mag) += (*root_1_mag);
+  if (*root_0 == NULL)
+    *root_0 = *root_1;
+  else
+  {
+    i32node *curr = *root_0;
+    while (curr->next != NULL)
+      curr = curr->next;
+    curr->next = *root_1;
+  }
+  *root_0_mag += *root_1_mag;
 }
 
 int equals_i32_node(i32node **root_0, i32node **root_1, int *root_0_mag, int *root_1_mag)
