@@ -55,7 +55,7 @@ void view_ch8_node(ch8node *root, int size)
   printf("[");
   while (root != NULL)
   {
-    printf(position < size ? "\"%s\", " : "\"%s\"", root->data);
+    printf(position < size ? "%s, " : "%s", root->data);
     root = root->next;
     position++;
   }
