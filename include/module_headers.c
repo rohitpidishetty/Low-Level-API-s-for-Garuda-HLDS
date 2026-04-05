@@ -30,3 +30,5 @@
 #include "./lib/util/tree_set_float64.c"
 #include "./lib/util/tree_set_string.c"
 #include "./lib/util/string_sub_routines.c"
+#include "./lib/util/priority_queue_i32.c"
+#include "./lib/util/priority_queue_f64.c"
