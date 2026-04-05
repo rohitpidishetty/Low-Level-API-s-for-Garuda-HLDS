@@ -1,6 +1,6 @@
 # Garuda HLDS – Low Level Libraries (C Runtime)
 
-Garuda HLDS (High-Level Data Structures) is powered by a **Low-Level API (LL-API)** implemented in **C**, forming the foundational runtime layer for core data structures.
+Garuda HLDS (High-Level Data Structures) is powered by a **Low-Level Library (LL-Lib)** implemented in **C**, forming the foundational runtime layer for core data structures.
 
 This project focuses on building efficient, memory-controlled, and reusable data structures that serve as the backbone for Garuda’s high-level abstractions.
 
@@ -17,7 +17,7 @@ Implemented in **C**, responsible for:
 - Performance optimization
 
 ### High-Level Layer (HLDS)
-Exposed within Garuda as abstract data structures, built on top of the LL-API.
+Exposed within Garuda as abstract data structures, built on top of the LL-Lib.
 
 ---
 
