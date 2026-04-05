@@ -15,7 +15,6 @@
 #include "./lib/util/hash_map_ch8k_i32v.c"
 #include "./lib/util/hash_map_ch8k_ch8v.c"
 #include "./lib/util/hash_map_ch8k_f64v.c"
-#include "./lib/util/priority_queue_i32.c"
 #include "./lib/util/tree_set_int32.c"
 #include "./lib/util/tree_set_float64.c"
 #include "./lib/util/tree_set_string.c"
@@ -23,6 +22,8 @@
 #include "./lib/util/multi_dim_linked_list_int.c"
 #include "./lib/util/multi_dim_linked_list_float.c"
 #include "./lib/util/multi_dim_linked_list_string.c"
+#include "./lib/util/priority_queue_i32.c"
+#include "./lib/util/priority_queue_f64.c"
 
 void main()
 {
@@ -1084,5 +1085,32 @@ void main()
   while ((E = poll_i32_heap(&m, m_heap_order)) != -1)
   {
     printf("%d\n", E);
+  }
+
+  pq_f64 *m2 = (pq_f64 *)malloc(sizeof(pq_f64));
+  int m2_heap_order = 1;
+  m2->size = 0;
+  // HEAP-Order: 0 is MIN,
+  // HEAP-Order: 1 is MAX
+
+  // m.offer(1)
+  offer_f64_heap(1.23, &m2, m2_heap_order);
+  // m.offer(3)
+  offer_f64_heap(3.423, &m2, m2_heap_order);
+  // m.offer(2)
+  offer_f64_heap(3.23, &m2, m2_heap_order);
+  // m.offer(7)
+  offer_f64_heap(8.23, &m2, m2_heap_order);
+  // m.offer(6)
+  offer_f64_heap(6.23, &m2, m2_heap_order);
+  // e = m.poll()
+  double F = poll_f64_heap(&m2, m2_heap_order);
+  printf("%.10f\n--\n", F);
+
+  // m.offer(16)
+  offer_f64_heap(16.97, &m2, m2_heap_order);
+  while ((F = poll_f64_heap(&m2, m2_heap_order)) != -1)
+  {
+    printf("%.10f\n", F);
   }
 }
