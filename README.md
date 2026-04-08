@@ -41,3 +41,7 @@ The LL-Lib provides implementations for:
 - Generic design using low-level abstractions  
 - Built to support a Garuda programming language runtime  
 
+---
+
+## License
+Garuda is licensed under the GNU General Public License v3 (GPL-3.0).
