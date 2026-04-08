@@ -45,3 +45,4 @@ The LL-Lib provides implementations for:
 
 ## License
 Garuda is licensed under the GNU General Public License v3 (GPL-3.0).
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
