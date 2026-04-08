@@ -262,7 +262,7 @@ void clear_dict_ch8k_ch8v(ch8node_ch8node_Tree **map, int *size)
 // int main()
 // {
 //   /**
-//    * dict<str, str> 5 = new dict<>(10)
+//    * dict<str, str> map5 = new dict<>(10)
 //    */
 //   int map5_size = 10;
 //   ch8node_ch8node_Tree *map5[map5_size];

@@ -1,9 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LINKED_LIST_STRING false
+#ifndef LINKED_LIST_STRING
 #include "../util/linked_list_string.c"
+#endif
+
+#ifndef TREE_SET_STRING
 #include "../util/tree_set_string.c"
+#endif
 
 typedef enum
 {
@@ -234,247 +238,247 @@ any_list_dtype *get_any_list_dtype_node(any_list_dtype **root, int index)
   return NULL;
 }
 
-void main()
-{
-  // All the values will be in 'String' by default while working with wild card types.
-  // 'T' indicates a list ch8node
+// void main()
+// {
+// // All the values will be in 'String' by default while working with wild card types.
+// // 'T' indicates a list ch8node
 
-  // list<?> l = new list<>()
-  // For logging output use 'trace()'
+// // list<?> l = new list<>()
+// // For logging output use 'trace()'
 
-  // any_list_dtype *l = NULL;
-  // int l_magnitude = 0;
+// // any_list_dtype *l = NULL;
+// // int l_magnitude = 0;
 
-  // // list<T> e1 = new list<>()
-  // ch8node *e1 = NULL;
-  // int e1_size = 0;
+// // // list<T> e1 = new list<>()
+// // ch8node *e1 = NULL;
+// // int e1_size = 0;
 
-  // // e1.push(98)
-  // add_ch8_node(&e1, "98", &e1_size);
+// // // e1.push(98)
+// // add_ch8_node(&e1, "98", &e1_size);
 
-  // // e1.push(232)
-  // add_ch8_node(&e1, "232", &e1_size);
+// // // e1.push(232)
+// // add_ch8_node(&e1, "232", &e1_size);
 
-  // // l.push(e1)
-  // add_any_list_dtype_node(&l, &l_magnitude, e1, 0);
+// // // l.push(e1)
+// // add_any_list_dtype_node(&l, &l_magnitude, e1, 0);
 
-  // // list<T> e2 = new list<>()
-  // ch8node *e2 = NULL;
-  // int e2_size = 0;
+// // // list<T> e2 = new list<>()
+// // ch8node *e2 = NULL;
+// // int e2_size = 0;
 
-  // // e2.push(3.79)
-  // add_ch8_node(&e2, "3.79", &e2_size);
+// // // e2.push(3.79)
+// // add_ch8_node(&e2, "3.79", &e2_size);
 
-  // // e2.push(34.3)
-  // add_ch8_node(&e2, "34.3", &e2_size);
+// // // e2.push(34.3)
+// // add_ch8_node(&e2, "34.3", &e2_size);
 
-  // // e2.push(376.09)
-  // add_ch8_node(&e2, "376.09", &e2_size);
+// // // e2.push(376.09)
+// // add_ch8_node(&e2, "376.09", &e2_size);
 
-  // // l.push(e2)
-  // add_any_list_dtype_node(&l, &l_magnitude, e2, 0);
+// // // l.push(e2)
+// // add_any_list_dtype_node(&l, &l_magnitude, e2, 0);
 
-  // // list<T> e3 = new list<>()
-  // ch8node *e3 = NULL;
-  // int e3_size = 0;
+// // // list<T> e3 = new list<>()
+// // ch8node *e3 = NULL;
+// // int e3_size = 0;
 
-  // // e3.push("hi")
-  // add_ch8_node(&e3, "hi", &e3_size);
+// // // e3.push("hi")
+// // add_ch8_node(&e3, "hi", &e3_size);
 
-  // // e3.push("how are you")
-  // add_ch8_node(&e3, "how are you", &e3_size);
+// // // e3.push("how are you")
+// // add_ch8_node(&e3, "how are you", &e3_size);
 
-  // // l.push(e3)
-  // add_any_list_dtype_node(&l, &l_magnitude, e3, 0);
-  // // Set 0 if type is T, else 1
+// // // l.push(e3)
+// // add_any_list_dtype_node(&l, &l_magnitude, e3, 0);
+// // // Set 0 if type is T, else 1
 
-  // // list<T> as = new list<>()
-  // ch8node *as = NULL;
-  // int as_size = 0;
+// // // list<T> as = new list<>()
+// // ch8node *as = NULL;
+// // int as_size = 0;
 
-  // // as.push("12")
-  // add_ch8_node(&as, "12", &as_size);
-  // // as.push("3")
-  // add_ch8_node(&as, "3", &as_size);
+// // // as.push("12")
+// // add_ch8_node(&as, "12", &as_size);
+// // // as.push("3")
+// // add_ch8_node(&as, "3", &as_size);
 
-  // // l.insertAt(1, as)
-  // insert_any_list_dtype_node(&l, as, 1, &l_magnitude, 0);
+// // // l.insertAt(1, as)
+// // insert_any_list_dtype_node(&l, as, 1, &l_magnitude, 0);
 
-  // // l.trace()
-  // view_any_list_dtype_node(l);
+// // // l.trace()
+// // view_any_list_dtype_node(l);
 
-  // --------------------------------------------
+// // --------------------------------------------
 
-  // list<list<list<int>>>
-  any_list_dtype *l = NULL;
-  int l_magnitude = 0;
+// // list<list<list<int>>>
+// any_list_dtype *l = NULL;
+// int l_magnitude = 0;
 
-  // list<?> g1 = new list<>()
-  any_list_dtype *g1 = NULL;
-  int g1_magnitude = 0;
+// // list<?> g1 = new list<>()
+// any_list_dtype *g1 = NULL;
+// int g1_magnitude = 0;
 
-  // list<T> E1 = new list<>()
-  ch8node *E1 = NULL;
-  int E1_size = 0;
+// // list<T> E1 = new list<>()
+// ch8node *E1 = NULL;
+// int E1_size = 0;
 
-  // e1.push(98)
-  // e1.push(232)
-  add_ch8_node(&E1, "98", &E1_size);
-  add_ch8_node(&E1, "232", &E1_size);
+// // e1.push(98)
+// // e1.push(232)
+// add_ch8_node(&E1, "98", &E1_size);
+// add_ch8_node(&E1, "232", &E1_size);
 
-  // g1.push(E1)
-  add_any_list_dtype_node(&g1, &g1_magnitude, E1, 0);
+// // g1.push(E1)
+// add_any_list_dtype_node(&g1, &g1_magnitude, E1, 0);
 
-  // list<?> g2 = new list<>()
-  any_list_dtype *g2 = NULL;
-  int g2_magnitude = 0;
+// // list<?> g2 = new list<>()
+// any_list_dtype *g2 = NULL;
+// int g2_magnitude = 0;
 
-  // list<T> E2 = new list<>()
-  ch8node *E2 = NULL;
-  int E2_size = 0;
+// // list<T> E2 = new list<>()
+// ch8node *E2 = NULL;
+// int E2_size = 0;
 
-  // E2.push("Hi")
-  // E2.push("How are you?")
-  add_ch8_node(&E2, "Hi", &E2_size);
-  add_ch8_node(&E2, "How are you?", &E2_size);
+// // E2.push("Hi")
+// // E2.push("How are you?")
+// add_ch8_node(&E2, "Hi", &E2_size);
+// add_ch8_node(&E2, "How are you?", &E2_size);
 
-  // g2.push(E2)
-  add_any_list_dtype_node(&g2, &g1_magnitude, E2, 0);
+// // g2.push(E2)
+// add_any_list_dtype_node(&g2, &g1_magnitude, E2, 0);
 
-  // l.push(g1)
-  add_any_list_dtype_node(&l, &l_magnitude, g1, 1);
+// // l.push(g1)
+// add_any_list_dtype_node(&l, &l_magnitude, g1, 1);
 
-  // l.push(g2)
-  add_any_list_dtype_node(&l, &l_magnitude, g2, 1);
+// // l.push(g2)
+// add_any_list_dtype_node(&l, &l_magnitude, g2, 1);
 
-  // l.trace()
-  view_any_list_dtype_node(l);
+// // l.trace()
+// view_any_list_dtype_node(l);
 
-  // If you are getting an entry with wild-card anylist use '?'
-  // ele = (?) l.get(0)
-  any_list_dtype *buff2 = (any_list_dtype *)get_any_list_dtype_node(&l, 0);
+// // If you are getting an entry with wild-card anylist use '?'
+// // ele = (?) l.get(0)
+// any_list_dtype *buff2 = (any_list_dtype *)get_any_list_dtype_node(&l, 0);
 
-  // buff2.trace()
-  view_any_list_dtype_node(buff2);
+// // buff2.trace()
+// view_any_list_dtype_node(buff2);
 
-  printf("+---------------------+\n");
+// printf("+---------------------+\n");
 
-  // -----------------------------------------------------------
+// // -----------------------------------------------------------
 
-  // Pre-reqs, add these at start while working with set's in list.
-  ch8node *any_set_temp_view;
-  int any_set_temp_view_size;
+// // Pre-reqs, add these at start while working with set's in list.
+// ch8node *any_set_temp_view;
+// int any_set_temp_view_size;
 
-  // list<?> listOfSet = new list<>()
-  any_list_dtype *listOfSet = NULL;
-  int listOfSet_magnitude = 0;
+// // list<?> listOfSet = new list<>()
+// any_list_dtype *listOfSet = NULL;
+// int listOfSet_magnitude = 0;
 
-  // set<T> s = new set<>()
-  ch8_t_set *s = NULL;
+// // set<T> s = new set<>()
+// ch8_t_set *s = NULL;
 
-  // s.union("ram")
-  seed_ch8_t_set(&s, "ram");
-  // s.union("ramesh")
-  seed_ch8_t_set(&s, "ramesh");
-  // s.union("ramesh")
-  seed_ch8_t_set(&s, "ramesh");
+// // s.union("ram")
+// seed_ch8_t_set(&s, "ram");
+// // s.union("ramesh")
+// seed_ch8_t_set(&s, "ramesh");
+// // s.union("ramesh")
+// seed_ch8_t_set(&s, "ramesh");
 
-  // listOfSet.push(s)
-  any_set_temp_view = NULL;
-  any_set_temp_view_size = 0;
-  elements_ch8_t_set(&s, &any_set_temp_view, &any_set_temp_view_size);
-  add_any_list_dtype_node(&listOfSet, &listOfSet_magnitude, any_set_temp_view, 0);
+// // listOfSet.push(s)
+// any_set_temp_view = NULL;
+// any_set_temp_view_size = 0;
+// elements_ch8_t_set(&s, &any_set_temp_view, &any_set_temp_view_size);
+// add_any_list_dtype_node(&listOfSet, &listOfSet_magnitude, any_set_temp_view, 0);
 
-  // set<T> s2 = new set<>()
-  ch8_t_set *s2 = NULL;
+// // set<T> s2 = new set<>()
+// ch8_t_set *s2 = NULL;
 
-  // s2.union("ram")
-  seed_ch8_t_set(&s2, "shyam");
-  // s2.union("ramesh")
-  seed_ch8_t_set(&s2, "shyam");
-  // s2.union("ramesh")
-  seed_ch8_t_set(&s2, "sunil");
+// // s2.union("ram")
+// seed_ch8_t_set(&s2, "shyam");
+// // s2.union("ramesh")
+// seed_ch8_t_set(&s2, "shyam");
+// // s2.union("ramesh")
+// seed_ch8_t_set(&s2, "sunil");
 
-  // listOfSet.push(s2)
-  any_set_temp_view = NULL;
-  any_set_temp_view_size = 0;
-  elements_ch8_t_set(&s2, &any_set_temp_view, &any_set_temp_view_size);
-  add_any_list_dtype_node(&listOfSet, &listOfSet_magnitude, any_set_temp_view, 0);
+// // listOfSet.push(s2)
+// any_set_temp_view = NULL;
+// any_set_temp_view_size = 0;
+// elements_ch8_t_set(&s2, &any_set_temp_view, &any_set_temp_view_size);
+// add_any_list_dtype_node(&listOfSet, &listOfSet_magnitude, any_set_temp_view, 0);
 
-  // list<T> E5 = new list<>()
-  ch8node *E5 = NULL;
-  int E5_size = 0;
+// // list<T> E5 = new list<>()
+// ch8node *E5 = NULL;
+// int E5_size = 0;
 
-  // E2.push("Hi")
-  // E2.push("How are you?")
-  add_ch8_node(&E5, "1", &E5_size);
-  add_ch8_node(&E5, "2", &E5_size);
-  add_ch8_node(&E5, "2", &E5_size);
-  add_ch8_node(&E5, "3", &E5_size);
+// // E2.push("Hi")
+// // E2.push("How are you?")
+// add_ch8_node(&E5, "1", &E5_size);
+// add_ch8_node(&E5, "2", &E5_size);
+// add_ch8_node(&E5, "2", &E5_size);
+// add_ch8_node(&E5, "3", &E5_size);
 
-  // g2.push(E2)
-  add_any_list_dtype_node(&listOfSet, &listOfSet_magnitude, E5, 0);
+// // g2.push(E2)
+// add_any_list_dtype_node(&listOfSet, &listOfSet_magnitude, E5, 0);
 
-  // listOfSet.trace()
-  view_any_list_dtype_node(listOfSet);
+// // listOfSet.trace()
+// view_any_list_dtype_node(listOfSet);
 
-  // listOfSet.poll()
-  poll_any_list_dtype_node(&listOfSet, &listOfSet_magnitude);
+// // listOfSet.poll()
+// poll_any_list_dtype_node(&listOfSet, &listOfSet_magnitude);
 
-  // listOfSet.pop()
-  pop_any_list_dtype_node(&listOfSet, &listOfSet_magnitude);
+// // listOfSet.pop()
+// pop_any_list_dtype_node(&listOfSet, &listOfSet_magnitude);
 
-  // listOfSet.trace()
-  view_any_list_dtype_node(listOfSet);
+// // listOfSet.trace()
+// view_any_list_dtype_node(listOfSet);
 
-  // listOfSet.insertAt(1, l)
-  insert_any_list_dtype_node(&listOfSet, l, 0, &listOfSet_magnitude, 1);
+// // listOfSet.insertAt(1, l)
+// insert_any_list_dtype_node(&listOfSet, l, 0, &listOfSet_magnitude, 1);
 
-  // listOfSet.trace()
-  view_any_list_dtype_node(listOfSet);
+// // listOfSet.trace()
+// view_any_list_dtype_node(listOfSet);
 
-  // // listOfSet.deleteAt(1)
-  // delete_any_list_dtype_node(&listOfSet, 1, &listOfSet_magnitude);
+// // // listOfSet.deleteAt(1)
+// // delete_any_list_dtype_node(&listOfSet, 1, &listOfSet_magnitude);
 
-  // // listOfSet.trace()
-  // view_any_list_dtype_node(listOfSet);
+// // // listOfSet.trace()
+// // view_any_list_dtype_node(listOfSet);
 
-  // // listOfSet.pop()
-  // pop_any_list_dtype_node(&listOfSet, &listOfSet_magnitude);
+// // // listOfSet.pop()
+// // pop_any_list_dtype_node(&listOfSet, &listOfSet_magnitude);
 
-  // // listOfSet.trace()
-  // view_any_list_dtype_node(listOfSet);
+// // // listOfSet.trace()
+// // view_any_list_dtype_node(listOfSet);
 
-  // size = listOfSet.isEmpty()
-  int size = is_empty_any_list_dtype_node(&listOfSet_magnitude);
-  printf("%d\n", size);
-  printf("+-----------------------+\n");
-  // l.trace()
-  view_any_list_dtype_node(l);
+// // size = listOfSet.isEmpty()
+// int size = is_empty_any_list_dtype_node(&listOfSet_magnitude);
+// printf("%d\n", size);
+// printf("+-----------------------+\n");
+// // l.trace()
+// view_any_list_dtype_node(l);
 
-  // l.clear()
-  clear_any_list_dtype_node(&l, &l_magnitude);
+// // l.clear()
+// clear_any_list_dtype_node(&l, &l_magnitude);
 
-  // l.trace()
-  view_any_list_dtype_node(l);
+// // l.trace()
+// view_any_list_dtype_node(l);
 
-  // listOfSet.trace()
-  view_any_list_dtype_node(listOfSet);
+// // listOfSet.trace()
+// view_any_list_dtype_node(listOfSet);
 
-  printf("+-----------------------+\n");
+// printf("+-----------------------+\n");
 
-  // listOfSet.reverse()
-  reverse_any_list_dtype_node(&listOfSet);
+// // listOfSet.reverse()
+// reverse_any_list_dtype_node(&listOfSet);
 
-  // listOfSet.trace()
-  view_any_list_dtype_node(listOfSet);
+// // listOfSet.trace()
+// view_any_list_dtype_node(listOfSet);
 
-  printf("+-----------------------+\n");
+// printf("+-----------------------+\n");
 
-  // If you are getting an entry with defined type, use T. 'T' will correspond to list<str>
-  // buff = (T) listOfSet.get(0)
-  ch8node *buff = (ch8node *)get_any_list_dtype_node(&listOfSet, 0);
+// // If you are getting an entry with defined type, use T. 'T' will correspond to list<str>
+// // buff = (T) listOfSet.get(0)
+// ch8node *buff = (ch8node *)get_any_list_dtype_node(&listOfSet, 0);
 
-  // buff.print()
-  view_T_node(buff);
-}
+// // buff.print()
+// view_T_node(buff);
+// }

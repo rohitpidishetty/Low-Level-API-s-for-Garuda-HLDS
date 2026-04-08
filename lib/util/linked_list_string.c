@@ -62,6 +62,17 @@ void view_ch8_node(ch8node *root, int size)
   printf("]\n");
 }
 
+void view_T_node(ch8node *root)
+{
+  printf("[");
+  while (root != NULL)
+  {
+    printf(root->next ? "%s, " : "%s", root->data);
+    root = root->next;
+  }
+  printf("]\n");
+}
+
 // void pop_ch8_node(ch8node *root, int *magnitude)
 // {
 //   if (root == NULL || root->next == NULL)
